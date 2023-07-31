@@ -70,12 +70,13 @@ class Home(tk.Tk):
                 cost += -premium if side == 'buy' else premium
 
             XXX = np.array(payoff).T
-            YYY = [float(np.sum(i)) for i in XXX]
+            YYY = [float(np.sum(i)) + cost for i in XXX]
             
 
             self.plot.cla()
             self.plot.set_title('Payoff Diagram', color=self.fg)
-            self.plot.plot(line, YYY, color='green')
+            self.plot.plot(line, YYY, color='red')
+            self.plot.plot(line, np.zeros(len(line)), color='green')
             self.canvas.draw()
 
         def clear():
